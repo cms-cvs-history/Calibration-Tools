@@ -1,0 +1,14 @@
+<use name=root>
+<use name=Calibration/Tools>
+<use name=Geometry/CaloEventSetup>
+<use name=Geometry/CaloGeometry>
+<use name=Geometry/EcalPreshowerAlgo>
+<use name=Geometry/CaloTopology>
+<use name=DataFormats/HcalDetId>
+<use name=DataFormats/EcalDetId>
+<use name=FWCore/Framework>
+
+
+<library file=testEcalRingCalibrationTools.cc name=testEcalRingCalibrationTools>
+<flags EDM_PLUGIN=1>
+</library>
