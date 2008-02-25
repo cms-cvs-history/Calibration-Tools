@@ -11,7 +11,7 @@
 
 #include "DataFormats/EgammaCandidates/interface/PixelMatchGsfElectron.h"
 #include "DataFormats/EgammaCandidates/interface/PixelMatchGsfElectronFwd.h"
-#include "PhysicsTools/RecoAlgos/interface/PixelMatchGsfElectronSelector.h"
+#include "PhysicsTools/RecoAlgos/interface/GsfElectronSelector.h"
 
 #include "Calibration/Tools/plugins/SelectorWithEventSetup.h"
 
