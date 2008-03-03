@@ -1,4 +1,8 @@
+#include "DataFormats/EcalDetId/interface/EBDetId.h"
 #include "Calibration/Tools/interface/CalibrationCluster.h"
+#include "DataFormats/EcalRecHit/interface/EcalRecHitCollections.h"
+#include<vector>
+#include<map>
 #include <iostream>
 #include <string>
 
