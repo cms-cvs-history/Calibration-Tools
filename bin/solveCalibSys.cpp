@@ -51,10 +51,10 @@ sumMatrices (std::vector<std::string> matrices,
 
   std::vector<std::string>::const_iterator mtrIt = matrices.begin () ;    
   CLHEP::HepMatrix * chi2Mtr = dynamic_cast<CLHEP::HepMatrix *> (
-    leggo.getMatrix (chi2MtrFile)) ;
+    leggo.getMatrix (*mtrIt)) ;
   chi2Mtr->num_row () ;
-  std::auto_ptr<CLHEP::HepMatrix> sumMatrix = new CLHEP::HepMatrix (
-    chi2Mtr->num_row (), chi2Mtr->num_row (), 0) ;
+  std::auto_ptr<CLHEP::HepMatrix> sumMatrix (new CLHEP::HepMatrix (
+    chi2Mtr->num_row (), chi2Mtr->num_row (), 0)) ;
   (*sumMatrix) += (*chi2Mtr) ;
   delete chi2Mtr ;
 
@@ -64,7 +64,7 @@ sumMatrices (std::vector<std::string> matrices,
        ++mtrIt)
     {
       CLHEP::HepMatrix * chi2Mtr = dynamic_cast<CLHEP::HepMatrix *> (
-        leggo.getMatrix (chi2MtrFile)) ;
+        leggo.getMatrix (*mtrIt)) ;
       (*sumMatrix) += (*chi2Mtr) ;
       delete chi2Mtr ;
     } //PG loop on matrices
