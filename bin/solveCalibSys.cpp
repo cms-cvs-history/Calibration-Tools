@@ -72,6 +72,43 @@ sumMatrices (std::vector<std::string> matrices,
 // ------------------------------------------------------------------------
 
 
+std::auto_ptr<CLHEP::HepVector>
+sumVectors (std::vector<std::string> vectors, 
+            std::vector<double> weights)
+{
+  matrixSaver leggo ;
+
+  std::vector<std::string>::const_iterator mtrIt = vectors.begin () ;    
+  std::vector<double>::const_iterator weiIt = weights.begin () ;    
+
+  CLHEP::HepVector * chi2Vtr = dynamic_cast<CLHEP::HepVector *> (
+    leggo.getMatrix (*mtrIt)) ;
+  chi2Vtr->num_row () ;
+  std::auto_ptr<CLHEP::HepVector> sumVector (new CLHEP::HepVector (
+    chi2Vtr->num_col (), 0)) ; //PG hope num_col is the right one
+  (*chi2Vtr) *= (*weiIt) ;
+  (*sumVector) += (*chi2Vtr) ;
+  delete chi2Vtr ;
+
+  //PG loop on matrices
+  for (++mtrIt ;
+       mtrIt != vectors.end () ;
+       ++mtrIt)
+    {
+      CLHEP::HepVector * chi2Vtr = dynamic_cast<CLHEP::HepVector *> (
+        leggo.getMatrix (*mtrIt)) ;
+      (*chi2Vtr) *= (*weiIt) ;        
+      (*sumVector) += (*chi2Vtr) ;
+      delete chi2Vtr ;
+    } //PG loop on matrices
+    
+  return sumVector ;
+}              
+
+
+// ------------------------------------------------------------------------
+
+
 inline int etaShifter (const int etaOld) 
    {
      if (etaOld < 0) return etaOld + 85 ;
