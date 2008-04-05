@@ -149,7 +149,8 @@ int main (int argc, char* argv[])
       return 1 ; 
     }
 
-
+  std::auto_ptr<CLHEP::HepMatrix> chi2Matrix = sumMatrices (chi2Matrices, chi2Weights) ;
+  std::auto_ptr<CLHEP::HepVector> chi2Vector = sumVectors (chi2Vectors, chi2Weights) ;
 
   if (argc < 3) return 1 ;
   std::string chi2MtrFile = argv[0] ; 
