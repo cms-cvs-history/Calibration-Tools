@@ -149,42 +149,31 @@ int main (int argc, char* argv[])
       return 1 ; 
     }
 
-  std::auto_ptr<CLHEP::HepMatrix> chi2Matrix = sumMatrices (chi2Matrices, chi2Weights) ;
-  std::auto_ptr<CLHEP::HepVector> chi2Vector = sumVectors (chi2Vectors, chi2Weights) ;
+  std::auto_ptr<CLHEP::HepMatrix> chi2Mtr = sumMatrices (chi2Matrices, chi2Weights) ;
+  std::auto_ptr<CLHEP::HepVector> chi2Vtr = sumVectors (chi2Vectors, chi2Weights) ;
 
-  if (argc < 3) return 1 ;
-  std::string chi2MtrFile = argv[0] ; 
-  std::string chi2VtrFile = argv[1] ; 
-  std::string cfgFile = argv[2] ;
-
-  matrixSaver leggo ;
-  
-  CLHEP::HepMatrix * chi2Mtr = dynamic_cast<CLHEP::HepMatrix *> (
-    leggo.getMatrix (chi2MtrFile)) ;
-  CLHEP::HepVector * chi2Vtr = dynamic_cast<CLHEP::HepVector *> (
-    leggo.getMatrix (chi2VtrFile)) ;
-
-  double min = 0.5 ; //FIXME
-  double max = 1.5 ; //FIXME
-  bool usingBlockSolver = false ; //FIXME
-  int region = 0 ; //FIXME
+  double min = pSet->getParameter<double> ("minCoeff") ; //0.5
+  double max = pSet->getParameter<double> ("minCoeff") ; //1.5
+  bool usingBlockSolver = pSet->getParameter<bool> ("usingBlockSolver") ;
+  int region = pSet->getParameter<int> ("regionID") ;
     
   CLHEP::HepVector result = CLHEP::solve (*chi2Mtr,*chi2Vtr) ;
-  if (result.normsq () < min * chi2Mtr->num_row () ||
-      result.normsq () > max * chi2Mtr->num_row ()) 
-    {
-    if (usingBlockSolver)  
-      {
-        edm::LogWarning ("IML") << "using  blocSlover " << std::endl ;
-        BlockSolver() (*chi2Mtr,*chi2Vtr,result) ;
-      }
-    else 
-      {
-        edm::LogWarning ("IML") <<"coeff out of range " <<std::endl;
-        for (int i = 0 ; i < chi2Vtr->num_row () ; ++i)
-              result[i] = 1. ;
-      }
-    }
+
+//  if (result.normsq () < min * chi2Mtr->num_row () ||
+//      result.normsq () > max * chi2Mtr->num_row ()) 
+//    {
+//    if (usingBlockSolver)  
+//      {
+//        edm::LogWarning ("IML") << "using  blocSlover " << std::endl ;
+//        BlockSolver() (*chi2Mtr,*chi2Vtr,result) ;
+//      }
+//    else 
+//      {
+//        edm::LogWarning ("IML") <<"coeff out of range " <<std::endl;
+//        for (int i = 0 ; i < chi2Vtr->num_row () ; ++i)
+//              result[i] = 1. ;
+//      }
+//    }
         
   unsigned int numberOfElements = chi2Mtr->num_row () ;
   std::map<unsigned int, float> coefficients ;
