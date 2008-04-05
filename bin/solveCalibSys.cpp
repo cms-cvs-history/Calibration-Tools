@@ -34,27 +34,22 @@
 
 #define PI_GRECO 3.14159265
 
+
 std::auto_ptr<CLHEP::HepMatrix>
 sumMatrices (std::vector<std::string> matrices, 
              std::vector<double> weights)
 {
-/* 
-1. get matrix size
-2. create mtr
-3. read and fill
-4. return
-*/
-
-//  std::auto_ptr<CLHEP::HepMatrix> = new CLHEP::HepMatrix () ;
-
   matrixSaver leggo ;
 
   std::vector<std::string>::const_iterator mtrIt = matrices.begin () ;    
+  std::vector<double>::const_iterator weiIt = weights.begin () ;    
+
   CLHEP::HepMatrix * chi2Mtr = dynamic_cast<CLHEP::HepMatrix *> (
     leggo.getMatrix (*mtrIt)) ;
   chi2Mtr->num_row () ;
   std::auto_ptr<CLHEP::HepMatrix> sumMatrix (new CLHEP::HepMatrix (
     chi2Mtr->num_row (), chi2Mtr->num_row (), 0)) ;
+  (*chi2Mtr) *= (*weiIt) ;
   (*sumMatrix) += (*chi2Mtr) ;
   delete chi2Mtr ;
 
@@ -65,6 +60,7 @@ sumMatrices (std::vector<std::string> matrices,
     {
       CLHEP::HepMatrix * chi2Mtr = dynamic_cast<CLHEP::HepMatrix *> (
         leggo.getMatrix (*mtrIt)) ;
+      (*chi2Mtr) *= (*weiIt) ;        
       (*sumMatrix) += (*chi2Mtr) ;
       delete chi2Mtr ;
     } //PG loop on matrices
