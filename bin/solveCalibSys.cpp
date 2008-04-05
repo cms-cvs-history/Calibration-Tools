@@ -13,8 +13,12 @@
 #include "CondFormats/EcalObjects/interface/EcalIntercalibConstants.h"
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "FWCore/ParameterSet/interface/MakeParameterSets.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "Calibration/Tools/interface/matrixSaver.h"
 #include "Calibration/EcalCalibAlgos/interface/BlockSolver.h"
+#include "boost/shared_ptr.hpp"
 
 //#include "Calibration/EcalAlCaRecoProducers/interface/trivialParser.h"
 //#include "Calibration/EcalAlCaRecoProducers/bin/trivialParser.h"
@@ -43,6 +47,35 @@ inline int etaShifter (const int etaOld)
 
 int main (int argc, char* argv[]) 
 {
+
+  if(argc != 2) {
+    std::cout << "Usage: edmParameterSetDump <cfgfile>" << std::endl;
+  }
+  std::string fileName (argv[1]) ;
+  boost::shared_ptr<edm::ProcessDesc> processDesc = edm::readConfigFile (fileName) ;
+
+  boost::shared_ptr<edm::ParameterSet> pSet = processDesc->getProcessPSet () ;
+  std::cout << pSet->dump () << std::endl;
+
+  //PG get the names of the matrices and vectors
+  typedef std::vector<std::string> namelist ;
+  namelist chi2Matrices = pSet->getParameter<namelist> ("chi2Matrices") ;
+  namelist chi2Vectors = pSet->getParameter<namelist> ("chi2Vectors") ;
+
+  if (chi2Matrices.size () != chi2Vectors.size ())
+    {
+      std::cerr << "size of \"chi2Matrices\" and \"chi2Vectors\" differ" << std::endl ;
+      return 1 ; 
+    }
+
+  std::vector<double> chi2Weights = pSet->getParameter<std::vector<double> > ("chi2Weights") ;
+  if (chi2Matrices.size () != chi2Weights.size ())
+    {
+      std::cerr << "size of \"chi2Matrices\" and \"chi2Weights\" differ" << std::endl ;
+      return 1 ; 
+    }
+
+
 
   if (argc < 3) return 1 ;
   std::string chi2MtrFile = argv[0] ; 
@@ -98,6 +131,3 @@ int main (int argc, char* argv[])
 
 
 }
-
-
-
