@@ -14,7 +14,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -68,7 +68,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -122,7 +122,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -177,7 +177,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -231,7 +231,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -283,7 +283,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -336,7 +336,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -388,7 +388,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -441,7 +441,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -494,7 +494,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
@@ -547,7 +547,7 @@
   <use name=Geometry/CaloTopology> 
   <use name=Geometry/Records>
   <use name=RecoEcal/EgammaClusterAlgos> 
-  <use name=Geometry/EcalPreshowerAlgo> 
+  <use name=Geometry/EcalAlgo> 
   <use name=DataFormats/Math> 
   <use name=TrackingTools/TrackAssociator> 
   <use name=Utilities/Timing> 
