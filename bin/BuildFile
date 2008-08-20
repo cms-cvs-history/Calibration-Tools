@@ -2,7 +2,8 @@
   <use name=CalibCalorimetry/CaloMiscalibTools>
 #  <use name=Calibration/EcalCalibAlgos>
   <use name=Calibration/Tools>
-  <use name=clhep> 
+  <use name=clhep>
+  <use name=CondCore/Utilities>   
   <use name=CondCore/DBCommon>
   <use name=CondCore/DBOutputService>
   <use name=CondFormats/DataRecord> 
@@ -49,6 +50,7 @@
 #  <use name=Calibration/EcalCalibAlgos>
   <use name=Calibration/Tools>
   <use name=clhep> 
+  <use name=CondCore/Utilities> 
   <use name=CondCore/DBCommon>
   <use name=CondCore/DBOutputService>
   <use name=CondFormats/DataRecord>
