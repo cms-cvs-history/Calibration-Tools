@@ -1,6 +1,5 @@
 <use name=root>
 <use name=Calibration/Tools>
-<use name=Geometry/CaloEventSetup>
 <use name=Geometry/CaloGeometry>
 <use name=Geometry/EcalAlgo>
 <use name=Geometry/CaloTopology>
